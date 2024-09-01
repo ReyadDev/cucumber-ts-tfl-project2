@@ -1,0 +1,29 @@
+{
+  "name": "cucumber-ts-tfl-project2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --require-module ts-node/register --require features/step_definitions/**/*.ts --format progress features/**/*.feature"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "axios": "^1.7.7",
+    "chai": "^5.1.1",
+    "date-fns": "^3.6.0",
+    "moment": "^2.30.1"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/chai": "^4.3.19",
+    "@types/date-fns": "^2.6.0",
+    "@types/moment": "^2.13.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
