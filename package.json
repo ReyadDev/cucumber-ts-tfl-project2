@@ -1,13 +1,13 @@
 {
   "name": "cucumber-ts-tfl-project2",
   "version": "1.0.0",
-  "description": "",
+  "description": "TFL Jounrey Scenarios API suite",
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js --require-module ts-node/register --require features/step_definitions/**/*.ts --format progress features/**/*.feature"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["TFL", "API"],
+  "author": "RSC",
   "license": "ISC",
   "dependencies": {
     "@cucumber/cucumber": "^10.9.0",

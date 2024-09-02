@@ -1,18 +1,21 @@
-//write gherkin steps and step defs
-//define any const variables
-//decide what parameters I am sending to the endpoint (what format)
-//API Key and any necessary Log in Credentials for 500 requests pm
-//Import axios library to make restful HTTP requests
-//Will the body be json files in json format or a url string appended with variable data?
-//create any methods to handle the data
-//confirm returned data - 200 response
-//check that it matches the expected result
-//console.log out response
+/*Strategy and Approach
+
+1. Write Gherkin steps and link with step defs
+2. Define any const variables
+3. Decide which parameters I am sending to the endpoint (format)
+4. Identify API Key and any necessary Log in Credentials (not relevant)
+5. Import Axios library to make restful HTTP requests
+6. Send requests via JSON files or a URL string appended with variable data?
+7. Create methods to underpin step defs and send/check data
+8. Confirm returned reponses from endpints - 200 response
+9. Check that it returned repsonses match the expected result
+10. Use console.log to output responses for debugging
+*/
 
 //import libraries and dependancies
-import { Given, When, Then, And } from "@cucumber/cucumber";
+import { Given, When, Then } from "@cucumber/cucumber";
 //const { Given, When, Then } = require('@cucumber/cucumber');
-//THIS IS CAUSING THE TEST TO FAIL. ITS SOMETHING TO DO WITH THE TSCONFIG AND THE DEPENDANCIES
+//These unresolved imported dependancies via tsconfig are causing the tests to fail.
 //const axios = import('axios');
 //import axios from 'axios';
 const axios = require("axios");
@@ -20,14 +23,13 @@ const axios = require("axios");
 //const { expect } = import('chai');
 import { expect } from "chai";
 import { parse } from "date-fns";
-//import JounreyService Class with planQuickestJourney method
+//Import the JourneyService Class to ensure that the methods can be reached
 import { JourneyService } from "../../services/JourneyService";
 
-//define any const variables
-//const TFL_API_KEY = "71820bc06e6941cf9e279e86955f800d"; //Not Required
+//Define any const variables
 const TFL_BASE_URL = "https://api.tfl.gov.uk/Journey/JourneyResults";
 
-//define the variables I will need to use
+//define any dynamic variables
 let error: any = null;
 let startLocation: string;
 let endLocation: string;
@@ -37,22 +39,24 @@ let journeyDepartureTime: any;
 const journeyService = new JourneyService();
 
 //SCENARIO 1, SCENARIO 2
-Given("I am at {string}", function (address: string) {
-  //pass starting location postcode as a declared string variable within an argument
+Given('I am at {string}', function (address: string) {
+  //Pass starting location address as a string variable within the argument
   startLocation = address;
+  return console.log('Start Location is ' + address);
 });
 
 //SCENARIO 1, SCENARIO 2
 Given("I need to go to {string}", function (address: string) {
-  //pass end location postcode as a declared string variable within an argument
+  //Pass end location address as a string variable within the argument
   endLocation = address;
+  return console.log("End Location is " + address);
 });
 
 //SCENARIO 3
 Given(
   "I need to go to {string} by {string} next Wednesday",
   async (address: string, time: string) => {
-    // Calculate the date for next Wednesday
+    // I am hardcoding the date but you could calculate the date for next Wednesday via Date Object
     endLocation = address;
     journeyArrivalTime = time;
     journeyPlan = await journeyService.planJourneyForNextWednesday(
@@ -60,57 +64,68 @@ Given(
       endLocation,
       journeyArrivalTime
     );
+    return console.log(
+      "End Location is " + address + " by " + time + " next Wednesday"
+    );
   }
 );
 
 //SCENARIO 1
 When("I plan the quickest journey", async function () {
-  //call method to pass through saved values to send to api
+  //Call method to pass start and end location values to query API endpoint
   journeyPlan = await journeyService.planQuickestJourney(
     startLocation,
     endLocation
   );
+  return console.log("I plan the quickest journey");
 });
 
 //SCENARIO 2
 When("I plan the journey", async function () {
-  //call method to pass through saved values to send to api
+  //Call method to pass start and end location values to query API endpoint
   journeyPlan = await journeyService.planJourney(startLocation, endLocation);
+  return console.log("I plan the journey");
 });
 
 //SCENARIO 3
 When("I plan the latest possible journey", async () => {
+  //Call method to pass start and end location values to query API endpoint
   journeyPlan = await journeyService.planLatestPossibleJourney(
     startLocation,
     endLocation,
     journeyDepartureTime
   );
+  return console.log("I plan the latest possible journey");
 });
 
 //SCENARIO 1
 Then(
   "I should see a valid journey plan with the shortest travel time",
   function () {
-    //check it is defined/populated
+    //Check that the reponse is defined/populated
     expect(journeyPlan).to.not.be.undefined;
-    //check that it is valid - is this required?
+    //Check that the response is valid - perhaps unecessary
     expect(journeyPlan.valid).to.be.true;
-    //compare encoded results to expected postcode
+    //Compare the encoded results to the expected address
     expect(journeyPlan.from).to.equal(startLocation);
     expect(journeyPlan.to).to.equal(endLocation);
-    //NEED TO IDENTIFY THAT THIS IS THE SHORTEST TRAVEL TIME - How?
+    //Identify that shortest travel time = true - investigate how.
+    return console.log(
+      "I should see a valid journey plan with the shortest travel time"
+    );
   }
 );
 
 //SCENARIO 2
 Then("I should see a valid journey plan", function () {
-  //check it is defined/populated
+  //Check that the reponse is defined/populated
   expect(journeyPlan).to.not.be.undefined;
-  //check that it is valid - is this required?
+  //Check that the response is valid - perhaps unecessary
   expect(journeyPlan.valid).to.be.true;
-  //compare encoded results to expected postcode
+  //Compare the encoded results to the expected address
   expect(journeyPlan.from).to.equal(startLocation);
   expect(journeyPlan.to).to.equal(endLocation);
+  return console.log("I should see a valid journey plan");
 });
 
 //SCENARIO 3
@@ -119,15 +134,21 @@ Then(
   async (time: string) => {
     const specifiedTime = parse(time, "HH:mm", new Date());
     journeyArrivalTime = await journeyService.getJourneyArrivalTime();
-
-    //check it is defined/populated
+    //Check that the reponse is defined/populate
     expect(journeyPlan).to.not.be.undefined;
-    //check that it is valid - is this required?
+    //Check that the response is valid - perhaps unecessary
     expect(journeyPlan.valid).to.be.true;
-    //compare encoded results to expected postcode
+    //Compare the encoded results to the expected address
     expect(journeyPlan.from).to.equal(startLocation);
     expect(journeyPlan.to).to.equal(endLocation);
-    //NEED TO CALCULATE THAT THIS HAS ARRIVED BEFORE 08:30
+    //Identify that this the journey arrival is before 08:30
+    //if < 08:30 = Pass
     expect(journeyArrivalTime).to.be.lessThan(specifiedTime);
+
+    return console.log(
+      "I should see a valid journey that arrives before " +
+        time +
+        " on that day"
+    );
   }
 );

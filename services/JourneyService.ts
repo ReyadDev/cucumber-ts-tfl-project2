@@ -1,23 +1,15 @@
-//import libraries and dependancies
-//const { Given, When, Then } = require('@cucumber/cucumber');
-//THIS IS CAUSING THE TEST TO FAIL. ITS SOMETHING TO DO WITH THE TSCONFIG AND THE DEPENDANCIES
-//const axios = import('axios');
 import axios from "axios";
-//const axios = require('axios');
-//import { expect } from 'chai';
-//const { expect } = import('chai');
-//import { expect } from 'chai';
 
-const TFL_API_KEY = "71820bc06e6941cf9e279e86955f800d"; //primary api key NOT secondary
-
+//Export class to ensure that methods are reachable
 export class JourneyService {
+  //Set baseURL so that the suffix URL can be dynamic according to test
   private baseUrl = "https://api.tfl.gov.uk/Journey/JourneyResults";
 
   public async planQuickestJourney(from: string, to: string) {
     // Encode the start and end locations to ensure they are URL-safe
     const encodedFrom = encodeURIComponent(from);
     const encodedTo = encodeURIComponent(to);
-    //url with uncoded elements that I am sending
+    //URL with uncoded elements that I am sending
     const url = `${this.baseUrl}/${encodedFrom}/to/${encodedTo}
   ?nationalSearch=false
   &date=20240903
@@ -27,14 +19,9 @@ export class JourneyService {
     //FROM: 69%20Notting%20Hill%20Gate,%20London%20W11%203JS
     //TO: Southbank%20Centre
 
-    //add a try/catch to handle error
+    //Add a try/catch to handle any errors or invalid responses
     try {
-      const response = await axios.get(url, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${TFL_API_KEY}`,
-        },
-      });
+      const response = await axios.get(url, {});
       //display api repsonse as output via the console
       console.log("API Response:", response.data);
 
@@ -70,12 +57,7 @@ export class JourneyService {
 
     //add a try/catch to handle error
     try {
-      const response = await axios.get(url, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${TFL_API_KEY}`,
-        },
-      });
+      const response = await axios.get(url, {});
       //display api repsonse as output via the console
       console.log("API Response:", response.data);
 
@@ -96,7 +78,7 @@ export class JourneyService {
   }
 
   public async getJourneyArrivalTime() {
-    //GET JOURNEY ARRIVAL TIME FROM RESPONSE
+    //Read journey time from repsonse
   }
 
   public async planJourneyForNextWednesday(
@@ -104,7 +86,7 @@ export class JourneyService {
     to: string,
     time: string
   ) {
-    //set JOURNEY ARRIVAL TIME FRO RESPONSE
+    //Set jounrey arrival time from response
   }
 
   public async planLatestPossibleJourney(
@@ -115,12 +97,3 @@ export class JourneyService {
     //Get the latest possible departure time
   }
 }
-
-/*
-params: {
-    nationalSearch: 'false',
-    date: '20240905',
-    time: '1800',
-    timeIs: 'Departing',
-    journeyPreference: 'LeastTime',
-    */

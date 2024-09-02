@@ -1,5 +1,6 @@
+@runFeature
 Feature: TfL Journey Planning
-
+@runScenario
   Scenario: Quickest journey from 69 Notting Hill Gate to Southbank Centre
     Given I am at "69 Notting Hill Gate, London W11 3JS"
     Given I need to go to "Southbank Centre"
