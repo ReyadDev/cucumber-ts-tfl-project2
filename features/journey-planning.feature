@@ -14,7 +14,7 @@ Feature: TfL Journey Planning
     Then I should see a valid journey plan
 
   Scenario: Plan a journey from Luton Airport to arrive at the office by 8:50 AM next Wednesday
-    Given I am at "Airport Way, Luton LU2 9LY"
+    Given I am at "London Luton Airport Operations Ltd, Navigation House, Airport Way, London, Luton Airport, Luton, LU2 9LY"
     And I need to go to "69 Notting Hill Gate, London W11 3JS" by "08:50" next Wednesday
     When I plan the latest possible journey
-    Then I should see a valid journey that arrives before "08:50" on that day
+    Then I should see a valid journey that arrives before "0850" on that day

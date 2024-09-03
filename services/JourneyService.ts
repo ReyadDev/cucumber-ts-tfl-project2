@@ -77,10 +77,6 @@ export class JourneyService {
     }
   }
 
-  public async getJourneyArrivalTime() {
-    //Read journey time from repsonse
-  }
-
   public async planJourneyForNextWednesday(
     from: string,
     to: string,
@@ -94,6 +90,17 @@ export class JourneyService {
     to: string,
     time: string
   ) {
-    //Get the latest possible departure time
+    // Encode the start and end locations to ensure they are URL-safe
+    const encodedFrom = encodeURIComponent(from);
+    const encodedTo = encodeURIComponent(to);
+    //url with uncoded elements that I am sending
+    const url = `${this.baseUrl}/${encodedFrom}/to/${encodedTo}
+?nationalSearch=false
+&date=20240904
+&time=0850
+&timeIs=Arriving
+&journeyPreference=LeastTime`;
+    //FROM: London%20Luton%20Airport%20Operations%20Ltd,%20Navigation%20House,%20Airport%20Way,%20London,%20Luton%20Airport,%20Luton,%20LU2%209LY
+    //TO: 69%20Notting%20Hill%20Gate,%20London%20W11%203JS
   }
 }

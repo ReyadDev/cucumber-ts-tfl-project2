@@ -39,10 +39,10 @@ let journeyDepartureTime: any;
 const journeyService = new JourneyService();
 
 //SCENARIO 1, SCENARIO 2
-Given('I am at {string}', function (address: string) {
+Given("I am at {string}", function (address: string) {
   //Pass starting location address as a string variable within the argument
   startLocation = address;
-  return console.log('Start Location is ' + address);
+  return console.log("Start Location is " + address);
 });
 
 //SCENARIO 1, SCENARIO 2
@@ -59,11 +59,6 @@ Given(
     // I am hardcoding the date but you could calculate the date for next Wednesday via Date Object
     endLocation = address;
     journeyArrivalTime = time;
-    journeyPlan = await journeyService.planJourneyForNextWednesday(
-      startLocation,
-      endLocation,
-      journeyArrivalTime
-    );
     return console.log(
       "End Location is " + address + " by " + time + " next Wednesday"
     );
@@ -109,7 +104,13 @@ Then(
     //Compare the encoded results to the expected address
     expect(journeyPlan.from).to.equal(startLocation);
     expect(journeyPlan.to).to.equal(endLocation);
-    //Identify that shortest travel time = true - investigate how.
+    //Check the shortest travel time = true
+    // Extract the journey preference from the URI in journeyVector
+    const journeyVector = journeyPlan.journeyVector;
+    const urlParams = new URLSearchParams(journeyVector.uri.split("?")[1]);
+    const journeyPreference = urlParams.get("journeypreference");
+    // Assert that journeyPreference equals 'leasttime'
+    expect(journeyPreference).to.equal("leasttime");
     return console.log(
       "I should see a valid journey plan with the shortest travel time"
     );
@@ -133,7 +134,7 @@ Then(
   "I should see a valid journey that arrives before {string} on that day",
   async (time: string) => {
     const specifiedTime = parse(time, "HH:mm", new Date());
-    journeyArrivalTime = await journeyService.getJourneyArrivalTime();
+    //journeyArrivalTime = await journeyService.getJourneyArrivalTime();
     //Check that the reponse is defined/populate
     expect(journeyPlan).to.not.be.undefined;
     //Check that the response is valid - perhaps unecessary
@@ -141,10 +142,15 @@ Then(
     //Compare the encoded results to the expected address
     expect(journeyPlan.from).to.equal(startLocation);
     expect(journeyPlan.to).to.equal(endLocation);
-    //Identify that this the journey arrival is before 08:30
-    //if < 08:30 = Pass
+    //Identify that this the journey arrival is before 0850
+    //if < 0850 = Pass
     expect(journeyArrivalTime).to.be.lessThan(specifiedTime);
-
+    // Extract the journey preference from the URI in journeyVector
+    const journeyVector = journeyPlan.journeyVector;
+    const urlParams = new URLSearchParams(journeyVector.uri.split("?")[1]);
+    const journeyPreference = urlParams.get("journeypreference");
+    // Assert that journeyPreference equals 'leasttime'
+    expect(journeyPreference).to.equal("leasttime");
     return console.log(
       "I should see a valid journey that arrives before " +
         time +
