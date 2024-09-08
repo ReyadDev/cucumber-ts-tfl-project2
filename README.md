@@ -58,6 +58,7 @@ To Do:
  - Check that endpoint return responses match the expected result
  - Use console.log to output responses for debugging
  - Resolve configuration issue to amend the configuration files to align and correct cucumber settings (Resolve the Commmon JS Require/ES Module Import issue) 
+ - Update tsconfig file by correcting location 'src/**/*.ts' file location
  - Complete running and debugging of expected/actual results
  - Add in loops and complete last comaprisons of expected and actual results
  
