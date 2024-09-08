@@ -60,3 +60,10 @@ To Do:
  - Resolve module issue 
  - Complete running and debugging of expected/actual results
  - Add in loops and complete last comaprisons of expected and actual results
+ 
+ - Improvement: Provide consistency by setting a fixed departure time and date for each test
+ - Improvement: check for a 200 repsponse instead of '.to.not.be.undefined;'
+ - Improvement: Build parameters into more explicit Feature file steps
+ - Improvement: Ignore mismatch of address format and string returned by API endpoint
+ - Improvement: Put in a method to handle the 300 response where multiple addresses are returned
+ - Improvement: Use address id and/or import/call geolocation to handle multiple addresses
