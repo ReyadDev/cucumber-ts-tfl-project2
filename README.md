@@ -44,8 +44,8 @@ execute the tests.
  - Installed Required Dependencies
  - Lost my mind trying to make the example feature work
  - Installed individual Cucumber Gherkin Prettier ESLint  
- - Installed Typescrpt Axios Chai, Date extensions etc 
-  - Imported Axios library to make restful HTTP requests
+ - Installed Typescrpt Axios, Chai, Date extensions etc 
+ - Imported Axios library to make restful HTTP requests
  - Wrote Gherkin steps and linked with step defs
  - Define const variables
  - Decided on what parameters I needed to send to the endpoint (format)
@@ -57,7 +57,7 @@ To Do:
 
  - Check that endpoint return responses match the expected result
  - Use console.log to output responses for debugging
- - Resolve module issue 
+ - Resolve configuration issue to amend the configuration files to align and correct cucumber settings (Resolve the Commmon JS Require/ES Module Import issue) 
  - Complete running and debugging of expected/actual results
  - Add in loops and complete last comaprisons of expected and actual results
  
