@@ -1,7 +1,7 @@
 {
   "name": "cucumber-ts-tfl-project2",
   "version": "1.0.0",
-  "description": "TFL Jounrey Scenarios API suite",
+  "description": "TFL Journey Scenarios API suite",
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js --require-module ts-node/register --require features/step_definitions/**/*.ts --format progress features/**/*.feature"

@@ -67,3 +67,4 @@ To Do:
  - Improvement: Ignore mismatch of address format and string returned by API endpoint
  - Improvement: Put in a method to handle the 300 response where multiple addresses are returned
  - Improvement: Use address id and/or import/call geolocation to handle multiple addresses
+ - Improvement: Add configuration to produce a cucumber report
