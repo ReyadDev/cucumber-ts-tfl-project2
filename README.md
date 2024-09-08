@@ -46,7 +46,7 @@ Automation Test Framework Strategy and Approach
  - Installed Typescrpt Axios, Chai, Date extensions etc 
  - Imported Axios library to make restful HTTP requests
  - Wrote Gherkin steps and linked with step defs
- - Define const variables
+ - Defined const variables
  - Decided on what parameters I needed to send to the endpoint (format)
  - Identifyed API Key and any necessary Log in Credentials (not relevant as not needed to make calls)
  - Decided if I was going to send requests via JSON files or via a URL string appended with variable data - chose latter due to straightforward input requirements and limited amount of tests
