@@ -27,8 +27,7 @@ Assumptions:
 execute the tests.
 ● Demonstrate the test execution (an automation report will suffice - you can commit it in your git repo)
 
-
- Strategy and Approach
+Automation Test Framework Strategy and Approach
 
  - Read the instructions a few times to understand the task
  - Investigated and signed up with the TFL API Swagger
@@ -62,11 +61,13 @@ To Do:
  - Complete running and debugging of expected/actual results
  - Add in loops and complete last comaprisons of expected and actual results
  
+Improvements:
+
  - Improvement: Provide consistency by setting a fixed departure time and date for each test
  - Improvement: check for a 200 repsponse instead of '.to.not.be.undefined;'
  - Improvement: Build parameters into more explicit Feature file steps
  - Improvement: Ignore mismatch of address format and string returned by API endpoint
  - Improvement: Could put in a method to handle the 300 response where multiple addresses are returned
  - Improvement: Could use address id and/or import/call geolocation to handle multiple addresses if they are returned
- - Use the journeyPlan API results to access specific raw data from the results (e.g.: journeyPlan.journeys for further tests)
+ - Improvement: Use the journeyPlan API results to access specific raw data from the results (e.g.: journeyPlan.journeys for further tests)
  - Improvement: Add configuration to produce a cucumber report
