@@ -7,16 +7,16 @@ const axios = require("axios");
 //import { expect } from 'chai';
 //const { expect } = import('chai');
 import { expect } from "chai";
-import { parse } from "date-fns";
 //Import the JourneyService Class to ensure that the methods can be reached
 import { JourneyService } from "../../services/JourneyService";
 
 //Define any const variables
 const TFL_BASE_URL = "https://api.tfl.gov.uk/Journey/JourneyResults";
 
-//define any variables
+//Define any variables
 let startLocation: string;
 let endLocation: string;
+//journeyPlan = all data from response inside {} returned by API
 let journeyPlan: any;
 let journeyArrivalTime: any;
 let journeyDepartureTime: any;
@@ -90,8 +90,6 @@ Then(
     const journeyPreference = urlParams.get("journeypreference");
     // Assert that journeyPreference equals 'leasttime'
     expect(journeyPreference).to.equal("leasttime");
-    //Multiple journeys are being returned here - need to extract the correct
-    //one by selecting the journey with the least journey time via a loop?
     console.log(
       "I should see a valid journey plan with the shortest travel time"
     );
@@ -113,7 +111,6 @@ Then(
     //Check that the reponse is defined/populated
     expect(journeyPlan).to.not.be.undefined;
     //Identify that this the journey arrival is before 0850 - if < 0850 = Pass
-    //Multiple journeys are being returned here - need to extract one via a loop
     console.log(
       "I should see a valid journey that arrives before " +
         time +

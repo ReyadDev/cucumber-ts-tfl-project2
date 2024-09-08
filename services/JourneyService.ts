@@ -77,5 +77,17 @@ export class JourneyService {
     //FROM: London%20Luton%20Airport%20Operations%20Ltd,%20Navigation%20House,%20Airport%20Way,%20London,%20Luton%20Airport,%20Luton,%20LU2%209LY
     //TO: 69%20Notting%20Hill%20Gate,%20London%20W11%203JS
     //TIME: time=0850
+
+    //add a try/catch to handle error
+    try {
+      const response = await axios.get(url, {});
+      //check that there is a valid response from API
+      console.log("API Response:", response.data);
+
+      return response.data;
+    } catch (error) {
+      const typedError = error as Error; // Corrected Type assertion error
+      console.error("Error planning journey:", typedError.message);
+    }
   }
 }
