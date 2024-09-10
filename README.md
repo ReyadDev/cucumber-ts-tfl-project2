@@ -31,7 +31,7 @@ Automation Test Framework Strategy and Approach
 
  - Read the instructions a few times to understand the task
  - Investigated and signed up with the TFL API Swagger
- - Ran the API enpoints via the TFL API Swagger to check input and output are valid, confirmed returned reponses from endpoints - 200 response
+ - Ran the API endpoints via the TFL API Swagger to check input and output are valid, confirmed returned reponses from endpoints - 200 response
  - Ran the instructions through ChatGTP to understand the overall steps
  - Checked Which IDE's are able to set up and work with a TypeScript project using Cucumber 
    for free or straight out the box (no paid required)
@@ -42,6 +42,7 @@ Automation Test Framework Strategy and Approach
  - Initialised Project via Git command line interface and VS Code terminal
  - Installed Required Dependencies
  - Lost my mind trying to make the example feature work
+ - Debugged via ChatGTP, StackOverflow, YouTube, Online Documentation 
  - Installed individual Cucumber Gherkin Prettier ESLint  
  - Installed Typescrpt Axios, Chai, Date extensions etc 
  - Imported Axios library to make restful HTTP requests
@@ -51,15 +52,16 @@ Automation Test Framework Strategy and Approach
  - Identifyed API Key and any necessary Log in Credentials (not relevant as not needed to make calls)
  - Decided if I was going to send requests via JSON files or via a URL string appended with variable data - chose latter due to straightforward input requirements and limited amount of tests
  - Created methods to underpin step defs and to send and check data
+ - Use console.log to output responses for debugging (could expand)
+
 
 To Do: 
 
- - Check that endpoint return responses match the expected result
- - Use console.log to output responses for debugging
- - Resolve configuration issue to amend the configuration files to align and correct cucumber settings (Resolve the Commmon JS Require/ES Module Import issue) 
+ - Check that endpoint return responses match the expected result more precisely
  - Update tsconfig file by correcting location 'src/**/*.ts' file location
  - Complete running and debugging of expected/actual results
  - Add in loops and complete last comaprisons of expected and actual results
+ 
  
 Improvements:
 
