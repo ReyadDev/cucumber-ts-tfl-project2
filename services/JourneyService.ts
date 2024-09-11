@@ -27,7 +27,7 @@ export class JourneyService {
 
       return response.data;
     } catch (error) {
-      const typedError = error as Error; // Corrected Type assertion error
+      const typedError = error as Error;
       console.error("Error planning journey:", typedError.message);
     }
   }
@@ -54,7 +54,7 @@ export class JourneyService {
 
       return response.data;
     } catch (error) {
-      const typedError = error as Error; // Corrected Type assertion error
+      const typedError = error as Error;
       console.error("Error planning journey:", typedError.message);
     }
   }
@@ -86,7 +86,7 @@ export class JourneyService {
 
       return response.data;
     } catch (error) {
-      const typedError = error as Error; // Corrected Type assertion error
+      const typedError = error as Error;
       console.error("Error planning journey:", typedError.message);
     }
   }
