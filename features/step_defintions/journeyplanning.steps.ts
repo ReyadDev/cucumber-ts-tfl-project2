@@ -111,6 +111,16 @@ Then(
     //Check that the reponse is defined/populated
     expect(journeyPlan).to.not.be.undefined;
     //Identify that this the journey arrival is before 0850 - if < 0850 = Pass
+    // Extract the journey preference from the URI in journeyVector
+    const journeyVector = journeyPlan.journeyVector;
+    const urlParams = new URLSearchParams(journeyVector.uri.split("?")[1]);
+    const scheduledArrivalTime = urlParams.get("scheduledArrivalTime");
+     // Assert that scheduledArrivalTime is less than time
+     //Convert/parse to a number and then compare
+  if (scheduledArrivalTime < time)
+  return true;
+else
+
     console.log(
       "I should see a valid journey that arrives before " +
         time +

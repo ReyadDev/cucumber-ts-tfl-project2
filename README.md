@@ -60,7 +60,7 @@ To Do:
  - Check that endpoint return responses match the expected result more precisely
  - Update tsconfig file by correcting location 'src/**/*.ts' file location
  - Complete running and debugging of expected/actual results
- - Add in loops and complete last comaprisons of expected and actual results
+ - Complete last comparisons of expected and actual results
  
  
 Improvements:
